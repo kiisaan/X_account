@@ -74,6 +74,16 @@ def main() -> None:
     now = datetime.now(JST)
     rng = random.Random()
     history = load_history()
+
+    # 新規アカウントの立ち上げ期間は1日1投稿まで（いきなり多投するとスパム判定されやすい）
+    warmup = cfg.get("warmup") or {}
+    if warmup.get("until") and now.date() < datetime.fromisoformat(str(warmup["until"])).date():
+        today = now.date().isoformat()
+        posted_today = sum(1 for h in history if h["at"].startswith(today))
+        if posted_today >= warmup.get("max_per_day", 1) and not args.dry_run:
+            print(f"立ち上げ期間中（{warmup['until']}まで）のため本日の投稿はスキップします")
+            return
+
     recent = [h["key"] for h in history[-cfg.get("avoid_recent", 20):]]
 
     text, key = compose(cfg, recent, now, rng)

@@ -4,9 +4,12 @@
 
 - 毎日 **8:07 / 12:37 / 17:07（JST）** の3回投稿（`.github/workflows/post.yml`）
 - 文面は見出し・本文・料金・信頼性・CTA・ハッシュタグをランダムに組み合わせ、**直近20件と同じ文面は使いません**（日付は毎回当日に自動更新）
+- 新規アカウント向けに、`config.yaml` の `warmup` の日付までは1日1件に制限
 - 当日の日付と料金を入れた画像（1200×675）を毎回添付し、配色も毎回変わります
 
 ## セットアップ
+
+アカウントのプロフィール・各種設定・最初の手動投稿は [ACCOUNT_SETUP.md](ACCOUNT_SETUP.md) を参照。
 
 1. [X Developer Portal](https://developer.x.com/) でアプリを作り、権限を **Read and write** にしてから以下の4つを発行
 2. GitHub のリポジトリ → Settings → Secrets and variables → Actions に登録
