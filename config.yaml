@@ -1,0 +1,75 @@
+# チケ発代行 募集ツイートの設定
+# 料金・連絡先・文面パーツはここを編集すれば反映されます。
+
+# 料金（チケット代は定価のまま。以下は代行手数料）
+pricing:
+  base_fee: 300        # 通常（前日まで依頼）1枚あたり
+  same_day_fee: 500    # 当日依頼 1枚あたり
+  multi_discount: 100  # 2枚以上で1枚あたり割引
+  currency: "円"
+
+contact:
+  method: "DM"               # DM / マシュマロ / LINEオープンチャット など
+  hours: "9:00〜23:00"
+  payment: "PayPay・銀行振込"
+
+# 実績ツイートに使う数字（実際の数に更新してください。不明なら空欄にすると実績文は使われません）
+track_record:
+  total_count: ""      # 例: "300"
+
+platforms:
+  - "ライブポケット"
+  - "チケットダイブ"
+
+# 文面パーツ。毎回ランダムに組み合わせ、直近の投稿と同じ組み合わせは避けます。
+# {date} {weekday} {platforms} {base_fee} {same_day_fee} {multi_discount} {contact} {hours} {payment} {total} が使えます。
+templates:
+  headline:
+    - "【本日{date}({weekday}) チケ発代行 受付中】"
+    - "＼{date}({weekday}) 当日チケ発 募集中／"
+    - "【当日OK】{date}({weekday})のチケ発お任せください"
+    - "🎫本日{date}({weekday})分のチケ発代行 承ります"
+    - "【{date}({weekday})】今日のライブのチケ発まだ間に合います"
+  body:
+    - "{platforms}の発券を代行。チケット代は定価のままです。"
+    - "{platforms}対応。アカウントがない方も代わりに発券します。"
+    - "{platforms}のチケ発、当日依頼もOK。定価でお渡しします。"
+    - "今日のライブのチケット、{platforms}で代わりに発券します。"
+  price:
+    - "💴手数料 1枚{base_fee}円／当日{same_day_fee}円"
+    - "手数料：通常{base_fee}円・当日{same_day_fee}円（2枚以上は1枚{multi_discount}円引き）"
+    - "料金は手数料{base_fee}円〜（当日{same_day_fee}円）＋チケット定価"
+  trust:
+    - "支払いは{payment}、発券確認後でOK"
+    - "{payment}対応・発券後の後払い制"
+    - "チケ発実績{total}件以上"
+    - "初めての方も気軽にご質問ください"
+  cta:
+    - "ご依頼は{contact}へ（{hours}）"
+    - "👉{contact}で公演名・枚数を送ってください"
+    - "受付は{contact}にて。{hours}対応"
+    - "お急ぎの方は今すぐ{contact}ください🙏"
+
+hashtags:
+  always:
+    - "#チケ発"
+  pool:
+    - "#チケ発代行"
+    - "#ライブポケット"
+    - "#チケットダイブ"
+    - "#地下アイドル"
+    - "#対バン"
+    - "#当日券"
+  pick: 2   # pool から毎回この数だけランダムに選ぶ
+
+image:
+  enabled: true
+  # 投稿画像のテーマカラー（背景・アクセント）
+  palettes:
+    - ["#1E1B4B", "#F472B6"]
+    - ["#0F172A", "#38BDF8"]
+    - ["#3B0764", "#FACC15"]
+    - ["#14532D", "#A3E635"]
+
+# 直近何件と同じ文面を避けるか
+avoid_recent: 20
